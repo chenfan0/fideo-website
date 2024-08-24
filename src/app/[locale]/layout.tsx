@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter } from "next/font/google";
 
 import NavBar from "@/components/NavBar";
@@ -28,6 +29,9 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} className="dark">
+      <Script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js" defer />
+      <Script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js" defer />
+      <Script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js" defer />
       <body className={inter.className}>
       <NextIntlClientProvider messages={messages}>
         <NavBar />

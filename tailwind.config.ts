@@ -8,7 +8,10 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/components/button.js",
     './node_modules/@nextui-org/theme/dist/components/navbar.js',
-    './node_modules/@nextui-org/theme/dist/components/link.js'
+    './node_modules/@nextui-org/theme/dist/components/link.js',
+    "./node_modules/@nextui-org/theme/dist/components/card.js",
+    "./node_modules/@nextui-org/theme/dist/components/input.js",
+    './node_modules/@nextui-org/theme/dist/components/modal.js'
   ],
   theme: {
     extend: {
