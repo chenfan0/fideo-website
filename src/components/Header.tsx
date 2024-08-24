@@ -47,7 +47,6 @@ export default function Header() {
   );
 
   const handleStartPreview = () => {
-    console.log("start preview", streamUrl);
     if (!streamUrl) return;
 
     setIsPreviewing(true);

@@ -33,7 +33,7 @@ export default async function RootLayout({
       <Script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js" defer />
       <Script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js" defer />
       <body className={inter.className}>
-      <NextIntlClientProvider messages={messages}>
+      <NextIntlClientProvider messages={messages} locale={locale}>
         <NavBar />
         {children}
       </NextIntlClientProvider>
