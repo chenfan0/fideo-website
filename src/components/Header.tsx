@@ -69,7 +69,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="relative z-10 py-12 px-4 mt-8 md:mt-14 md:py-20">
+      <header className="relative z-10 py-12 px-4 mt-8 md:mt-14 md:py-20 max-w-[1140px] mx-auto text-center overflow-hidden">
         <section>
           <div className="absolute left-1/2 top-1/2 -z-10 h-[400px] w-[800px] -translate-x-1/2 -translate-y-1/2 opacity-10 blur-[100px] bg-emerald-500"></div>
           <h1 className="inline-flex flex-col gap-1 transition font-display text-6xl font-bold leading-none md:text-[8rem] bg-gradient-to-r from-20% bg-clip-text text-transparent from-emerald-400 to-yellow-300">

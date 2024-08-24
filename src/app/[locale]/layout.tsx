@@ -29,7 +29,7 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} className="dark">
-      <Script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js" defer />
+      <Script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js" />
       <Script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js" defer />
       <Script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js" defer />
       <body className={inter.className}>

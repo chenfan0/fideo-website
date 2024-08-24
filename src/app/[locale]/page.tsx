@@ -1,10 +1,17 @@
 import Header from "@/components/Header";
+import Features from "@/components/Features";
 
-export default function Home() {
+interface HomeProps {
+  locale: "cn" | "en";
+}
+
+export default function Home(params: HomeProps) {
+  const { locale } = params;
+  console.log(locale, '=======')
   return (
-    <main className=" max-w-[1140px] m-auto text-center overflow-hidden">
+    <main className="  overflow-hidden ">
       <Header />
-
+      <Features locale={locale} />
     </main>
   );
 }
