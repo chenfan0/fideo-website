@@ -1,13 +1,9 @@
-
-import { Button } from "@nextui-org/button";
-import { useTranslations } from 'next-intl';
+import Header from "@/components/Header";
 
 export default function Home() {
-  const t =  useTranslations()
   return (
-    <div>
-      <h1></h1>
-      <Button>{t('title')}</Button>
-    </div>
+    <main className=" max-w-[1140px] m-auto text-center overflow-hidden">
+      <Header />
+    </main>
   );
 }
