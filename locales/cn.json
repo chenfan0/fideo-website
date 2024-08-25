@@ -2,7 +2,9 @@
   "navbar": {
     "features": "功能",
     "faq": "常见问题",
-    "download": "下载"
+    "download": "下载",
+    "sponsor": "打赏作者",
+    "contact": "联系作者"
   },
   "header": {
     "description": "一款免费开源的强大软件，可一键录制主流直播间精彩内容。它支持实时监控直播间，支持检测分辨率变化，即刻自动重新录制，确保录制质量始终卓越。完美兼容 Mac 与 Windows 系统，让你轻松畅享便捷录制体验。",
@@ -23,6 +25,41 @@
     "resolution_change": {
       "title": "精准检测，清晰画面",
       "desc": "能够检测分辨率，彻底解决花屏问题。为你呈现清晰流畅的录制画面，如同身临其境，带来极致的视觉体验。"
+    }
+  },
+  "faq": {
+    "title": "常见问题",
+    "question1": {
+      "title": "我应该下载哪个版本？",
+      "content": "苹果 M 系列芯片用户请下载 arm64.dmg 版本，其他用户请下载 x64.dmg 版本。Windows 用户请下载 .exe 版本。"
+    },
+    "question2": {
+      "title": "如何录制直播间以及每个配置的含义？",
+      "content": "点击开始录制，输入直播间地址，点击开始预览，即可开始录制。"
+    },
+    "question3": {
+      "title": "Mac显示文件已损坏，无法打开，怎么办？",
+      "content": "打开终端，输入以下命令："
+    },
+    "question4": {
+      "title": "Windows报病毒怎么办？",
+      "content": "直接忽略即可，Fideo 是开源免费的，不会对系统造成任何影响。"
+    },
+    "question5": {
+      "title": "下载时被浏览器屏蔽怎么办？",
+      "content": "尝试更换浏览器下载"
+    },
+    "question6": {
+      "title": "如何获取Cookie？",
+      "content": "https://www.bilibili.com/video/BV1G24y1o75g/?spm_id_from=333.337.search-card.all.click&vd_source=7175c3866fe9ca259066ef7898056268"
+    },
+    "question7": {
+      "title": "如何获取息知Key？",
+      "content": "https://xz.qqoq.net/#/index"
+    },
+    "question8": {
+      "title": "为什么填写了息知Key，没有给我推送相关信息？",
+      "content": "只有在软件最小化的时候才会进行微信的推送，如果软件没有最小化，则不会进行推送。"
     }
   }
 }

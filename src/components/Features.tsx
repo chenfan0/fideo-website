@@ -9,7 +9,6 @@ import ResolutionChangeEN from "@/images/features/en/resolution-change.webp";
 import MonitoringCN from "@/images/features/cn/monitoring.webp";
 import MonitoringEN from "@/images/features/en/monitoring.webp";
 
-
 export default function Features() {
   const t = useTranslations("features");
   const locale = useLocale();
@@ -24,11 +23,11 @@ export default function Features() {
         <h2 className="font-display text-3xl font-semibold md:text-5xl text-nowrap">
           {t("easy_to_use.title")}
         </h2>
-        <p className="mt-8 text-lg text-[#aeb5bd;] mx-auto max-w-[520px]">
+        <p className="mt-4 md:mt-8 text-xs md:text-lg text-[#aeb5bd;] mx-auto max-w-[520px]">
           {t("easy_to_use.desc")}
         </p>
         <Image
-          className="max-w-[90%] mx-auto mt-8 border-1 border-[#323334] rounded-lg hover:scale-[1.01] hover:border-2 transition-all duration-300"
+          className="max-w-[100%] md:max-w-[90%] mx-auto mt-8 border-1 border-[#323334] rounded-lg hover:scale-[1.01] hover:border-2 transition-all duration-300"
           src={Recording}
           alt="easy_to_use"
         />
@@ -38,11 +37,11 @@ export default function Features() {
         <h2 className="font-display text-3xl font-semibold md:text-5xl text-nowrap">
           {t("monitor_stream.title")}
         </h2>
-        <p className="mt-8 text-lg text-[#aeb5bd;] mx-auto max-w-[520px]">
+        <p className="mt-4 md:mt-8 text-xs md:text-lg text-[#aeb5bd;] mx-auto max-w-[520px]">
           {t("monitor_stream.desc")}
         </p>
         <Image
-          className="max-w-[90%] mx-auto mt-8 border-1 border-[#323334] rounded-lg hover:scale-[1.01] hover:border-2 transition-all duration-300"
+          className="max-w-[100%] md:max-w-[90%] mx-auto mt-8 border-1 border-[#323334] rounded-lg hover:scale-[1.01] hover:border-2 transition-all duration-300"
           src={Monitoring}
           alt="monitor_stream"
         />
@@ -52,12 +51,12 @@ export default function Features() {
         <h2 className="font-display text-3xl font-semibold md:text-5xl text-nowrap">
           {t("resolution_change.title")}
         </h2>
-        <p className="mt-8 text-lg text-[#aeb5bd;] mx-auto max-w-[520px]">
+        <p className="mt-4 md:mt-8 text-xs md:text-lg text-[#aeb5bd;] mx-auto max-w-[520px]">
           {t("resolution_change.desc")}
         </p>
 
         <Image
-          className="max-w-[90%] mx-auto mt-8 border-1 border-[#323334] rounded-lg hover:scale-[1.01] hover:border-2 transition-all duration-300"
+          className="max-w-[100%] md:max-w-[90%] mx-auto mt-8 border-1 border-[#323334] rounded-lg hover:scale-[1.01] hover:border-2 transition-all duration-300"
           src={ResolutionChange}
           alt="resolution_change"
         />

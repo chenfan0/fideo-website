@@ -11,7 +11,9 @@ const config: Config = {
     './node_modules/@nextui-org/theme/dist/components/link.js',
     "./node_modules/@nextui-org/theme/dist/components/card.js",
     "./node_modules/@nextui-org/theme/dist/components/input.js",
-    './node_modules/@nextui-org/theme/dist/components/modal.js'
+    './node_modules/@nextui-org/theme/dist/components/modal.js',
+    './node_modules/@nextui-org/theme/dist/components/accordion.js',
+    './node_modules/@nextui-org/theme/dist/components/snippet.js'
   ],
   theme: {
     extend: {

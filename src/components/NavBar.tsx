@@ -21,6 +21,14 @@ export default function NavBar() {
 
   const menuItems = ["Profile"];
 
+  const handleScrollIntoView = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
@@ -41,24 +49,43 @@ export default function NavBar() {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-10" justify="start">
-        <NavbarItem>
-          <Link color="foreground" href="#features">
+        {/* <NavbarItem>
+          <Link className="cursor-pointer" color="foreground" onClick={() => handleScrollIntoView("features")}>
             {t("navbar.features")}
           </Link>
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem>
-          <Link color="foreground" href="#download" aria-current="page">
+          <Link
+            className="cursor-pointer"
+            color="foreground"
+            href="https://github.com/chenfan0/fideo-live-record/releases"
+            target="_blank"
+          >
             {t("navbar.download")}
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#faq">
+          <Link
+            className="cursor-pointer"
+            color="foreground"
+            href="#faq"
+            onClick={(e) => handleScrollIntoView(e, "faq")}
+          >
             {t("navbar.faq")}
           </Link>
         </NavbarItem>
+        {/* <NavbarItem>
+          <Link
+            className="cursor-pointer"
+            color="foreground"
+            onClick={(e) => handleScrollIntoView(e, "sponsor")}
+          >
+            {t("navbar.sponsor")}
+          </Link>
+        </NavbarItem> */}
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-10" justify="start">
+      <NavbarContent className="hidden sm:flex gap-10" justify="end">
         <NavbarItem>
           <Link
             color="foreground"
