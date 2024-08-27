@@ -19,8 +19,6 @@ export default function NavBar() {
   const t = useTranslations();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = ["Profile"];
-
   const handleScrollIntoView = (
     e: React.MouseEvent<HTMLAnchorElement>,
     id: string
@@ -33,7 +31,7 @@ export default function NavBar() {
   };
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar onMenuOpenChange={setIsMenuOpen} isMenuOpen={isMenuOpen}>
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -85,7 +83,7 @@ export default function NavBar() {
         </NavbarItem> */}
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-10" justify="end">
+      <NavbarContent className="sm:flex gap-10" justify="end">
         <NavbarItem>
           <Link
             color="foreground"
@@ -97,24 +95,28 @@ export default function NavBar() {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              className="w-full"
-              href="#"
-              size="lg"
-            >
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))}
+        <NavbarMenuItem>
+          <Link
+            color="foreground"
+            className="w-full"
+            href="https://github.com/chenfan0/fideo-live-record/releases"
+            size="lg"
+            onPress={() => setIsMenuOpen(false)}
+          >
+            {t("navbar.download")}
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+          <Link
+            color="foreground"
+            className="w-full"
+            href="#faq"
+            size="lg"
+            onPress={() => setIsMenuOpen(false)}
+          >
+            {t("navbar.faq")}
+          </Link>
+        </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
   );
