@@ -1,4 +1,7 @@
 {
+  "meta": {
+    "description": "Fideo is a free and open-source software that can record live streams from popular platforms like Bilibili, Douyu, and Huya."
+  },
   "navbar": {
     "features": "Features",
     "faq": "FAQ",
