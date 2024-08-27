@@ -21,7 +21,10 @@ export default function NavBar() {
 
   const menuItems = ["Profile"];
 
-  const handleScrollIntoView = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const handleScrollIntoView = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
@@ -37,23 +40,20 @@ export default function NavBar() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <Image
-            src="/logo.png"
-            width="40"
-            height="40"
-            alt="fideo logo"
-            priority={true}
-            className=" w-[auto] h-[auto]"
-          />
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              width="40"
+              height="40"
+              alt="fideo logo"
+              priority={true}
+              className=" w-[auto] h-[auto]"
+            />
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-10" justify="start">
-        {/* <NavbarItem>
-          <Link className="cursor-pointer" color="foreground" onClick={() => handleScrollIntoView("features")}>
-            {t("navbar.features")}
-          </Link>
-        </NavbarItem> */}
         <NavbarItem>
           <Link
             className="cursor-pointer"

@@ -38,7 +38,7 @@ const platforms = [
   },
 ];
 
-export default function Header() {
+export default function StreamPreviewHeader() {
   const t = useTranslations();
   const platformsRef = useRef<HTMLDivElement>(null);
   const [isPreviewing, setIsPreviewing] = useState(false);

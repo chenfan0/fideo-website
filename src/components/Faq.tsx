@@ -18,11 +18,6 @@ export default function Faq() {
         {t("title")}
       </h2>
       <Accordion className=" mx-auto mt-8 text-left" variant="light">
-        {/* {commonQuestions.map((question, index) => (
-          <AccordionItem className="text-[#aeb5bd;]"  key={index} aria-label={question.title} title={question.title}>
-            {question.content}  
-          </AccordionItem>
-        ))} */}
         <AccordionItem
           className="text-[#aeb5bd;]"
           key={t("question1.title")}
@@ -40,14 +35,16 @@ export default function Faq() {
           {t("question2.content")}
         </AccordionItem>
         <AccordionItem
-          className="text-[#aeb5bd;]"
+          className="text-[#aeb5bd;] max-w-[100%]"
           key={t("question3.title")}
           aria-label={t("question3.title")}
           title={t("question3.title")}
         >
           {t("question3.content")}
-          <Snippet>
-            sudo xattr -r -d com.apple.quarantine /Applications/Fideo.app
+          <Snippet className=" overflow-y-scroll max-w-[100%]">
+            <div className="inline-flex">
+              sudo xattr -r -d com.apple.quarantine /Applications/Fideo.app
+            </div>
           </Snippet>
         </AccordionItem>
         <AccordionItem
