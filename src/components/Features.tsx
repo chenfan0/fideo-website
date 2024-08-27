@@ -20,7 +20,7 @@ export default function Features() {
   return (
     <section className="mt-16 md:mt-24  px-8 text-center max-w-[1140px] m-auto">
       <section className=" mt-16 md:mt-24 ">
-        <h2 className="font-display text-3xl font-semibold md:text-5xl text-nowrap">
+        <h2 className="font-display text-3xl font-semibold md:text-5xl">
           {t("easy_to_use.title")}
         </h2>
         <p className="mt-4 md:mt-8 text-xs md:text-lg text-[#aeb5bd;] mx-auto max-w-[520px]">
@@ -34,7 +34,7 @@ export default function Features() {
       </section>
 
       <section className="mt-16 md:mt-24">
-        <h2 className="font-display text-3xl font-semibold md:text-5xl text-nowrap">
+        <h2 className="font-display text-3xl font-semibold md:text-5xl">
           {t("monitor_stream.title")}
         </h2>
         <p className="mt-4 md:mt-8 text-xs md:text-lg text-[#aeb5bd;] mx-auto max-w-[520px]">
@@ -48,7 +48,7 @@ export default function Features() {
       </section>
 
       <section className="mt-16 md:mt-24">
-        <h2 className="font-display text-3xl font-semibold md:text-5xl text-nowrap">
+        <h2 className="font-display text-3xl font-semibold md:text-5xl">
           {t("resolution_change.title")}
         </h2>
         <p className="mt-4 md:mt-8 text-xs md:text-lg text-[#aeb5bd;] mx-auto max-w-[520px]">

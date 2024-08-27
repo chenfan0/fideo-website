@@ -42,9 +42,7 @@ export default function StreamPreviewHeader() {
   const t = useTranslations();
   const platformsRef = useRef<HTMLDivElement>(null);
   const [isPreviewing, setIsPreviewing] = useState(false);
-  const [streamUrl, setStreamUrl] = useState(
-    "https://bd-flv.yy.com/live/15013_xv_1382819273_1382819273_0_0_0-15013_xa_1382819273_1382819273_0_0_0-0-0-0-0-0-1724475840545741.flv?codec=orig&appid=15013&rts_tk=9b4df0b9ae1965f7feccf3e93ff81fef&secret=bbbf87c04c149fbd0703f82908907205&t=1724573501&stream_key=15013_xv_1382819273_1382819273_0_0_0&r_stream_key=15013_xa_1382819273_1382819273_0_0_0&channelid=1382819273&cp_id=4&mtk=1&line_seq=6&rts=1&ctx=eyJydHNfYXV0aCI6MiwiZGVmX3Bhc3MiOjF9&r=enter"
-  );
+  const [streamUrl, setStreamUrl] = useState("");
 
   const handleStartPreview = () => {
     if (!streamUrl) return;
@@ -65,6 +63,15 @@ export default function StreamPreviewHeader() {
       repeat: -1,
     });
   }, [t]);
+
+  useEffect(() => {
+    const search = new URLSearchParams(window.location.search);
+    const streamUrl = search.get("streamUrl");
+    if (streamUrl) {
+      setStreamUrl(streamUrl);
+      setIsPreviewing(true);
+    }
+  }, []);
 
   return (
     <>

@@ -7,59 +7,59 @@
     "contact": "Contact"
   },
   "header": {
-    "description": "A powerful, free, and open-source software that can record content from mainstream live streams with one click. It supports real-time monitoring of live rooms and detects resolution changes, automatically re-recording to ensure consistently excellent recording quality. Perfectly compatible with Mac and Windows systems, providing you with a convenient recording experience.",
-    "please_enter_stream_url": "Please enter the live stream URL",
+    "description": "A powerful, free, and open-source software that lets you easily record popular live streams. It monitors streams in real-time, automatically adjusts to resolution changes, and ensures high recording quality. Compatible with both Mac and Windows.",
+    "please_enter_stream_url": "Please enter the stream URL",
     "start_preview": "Start Preview",
     "live_preview": "Live Preview"
   },
   "features": {
-    "title": "Open Source and Free, Enjoy Worry-Free",
+    "title": "Free & Open Source",
     "easy_to_use": {
-      "title": "Simple and Convenient, One-Click Recording",
-      "desc": "Extremely simple and convenient to operate, recording with just one click. Whether you're a beginner or an experienced user, you can quickly get started and easily capture every exciting moment in the live stream."
+      "title": "Easy to Use, One-Click Recording",
+      "desc": "Simple and user-friendly. Whether you're a beginner or a pro, start recording effortlessly with just one click."
     },
     "monitor_stream": {
-      "title": "Real-time Monitoring, Automatic Recording",
-      "desc": "Supports real-time monitoring of live rooms and detects resolution changes, automatically re-recording instantly to ensure consistently excellent recording quality."
+      "title": "Real-Time Monitoring, Auto Recording",
+      "desc": "Monitors streams in real-time and automatically restarts recording when resolution changes to ensure quality."
     },
     "resolution_change": {
-      "title": "Precise Detection, Clear Picture",
-      "desc": "Able to detect resolution changes, completely solving screen tearing issues. Presents you with clear and smooth recorded footage, as if you were there, bringing an ultimate visual experience."
+      "title": "Accurate Detection, Clear Picture",
+      "desc": "Detects resolution changes, solving screen tearing issues. Enjoy a clear and smooth recording experience."
     }
   },
   "faq": {
-    "title": "Frequently Asked Questions",
+    "title": "FAQ",
     "question1": {
       "title": "Which version should I download?",
-      "content": "Apple M series chip users, please download the arm64.dmg version. Other users, please download the x64.dmg version. Windows users, please download the .exe version."
+      "content": "Mac M-series users should download the arm64.dmg version. Other Mac users, download the x64.dmg. Windows users, download the .exe."
     },
     "question2": {
-      "title": "How to record live rooms and what does each configuration mean?",
-      "content": "Click 'Start Recording', enter the live room address, click 'Start Preview', and you can begin recording."
+      "title": "How do I record a stream and what do the settings mean?",
+      "content": "Click 'Start Recording', enter the stream URL, and click 'Start Preview' to begin."
     },
     "question3": {
-      "title": "Mac shows the file is damaged and can't be opened, what should I do?",
-      "content": "Open the terminal and enter the following command:"
+      "title": "What if Mac says the file is damaged?",
+      "content": "Open Terminal and enter the following command:"
     },
     "question4": {
-      "title": "What if Windows reports a virus?",
-      "content": "You can simply ignore it. Fideo is open-source and free, and will not cause any harm to your system."
+      "title": "What if Windows flags it as a virus?",
+      "content": "Ignore it. Fideo is open-source and safe."
     },
     "question5": {
-      "title": "What if the browser blocks the download?",
-      "content": "Try switching to a different browser to download"
+      "title": "What if my browser blocks the download?",
+      "content": "Try using a different browser."
     },
     "question6": {
-      "title": "How to obtain the Cookie?",
-      "content": "https://www.youtube.com/watch?v=sz07F5inaFg"
+      "title": "How do I get the Cookie?",
+      "content": "https://www.bilibili.com/video/BV1G24y1o75g/?spm_id_from=333.337.search-card.all.click&vd_source=7175c3866fe9ca259066ef7898056268"
     },
     "question7": {
-      "title": "How to get the XiZhi Key?",
+      "title": "How do I get the Xizhi Key?",
       "content": "https://xz.qqoq.net/#/index"
     },
     "question8": {
-      "title": "Why am I not receiving push notifications after filling in the XiZhi Key?",
-      "content": "WeChat push notifications are only sent when the software is minimized. If the software is not minimized, no notifications will be sent."
+      "title": "Why am I not receiving notifications with the Xizhi Key?",
+      "content": "Notifications are sent only when the software is minimized."
     }
   },
   "footer": {
