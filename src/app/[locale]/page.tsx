@@ -1,6 +1,7 @@
 import StreamPreviewHeader from "@/components/StreamPreviewHeader";
 import Features from "@/components/Features";
 import Faq from "@/components/Faq";
+import Contact from "@/components/Contact";
 
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <StreamPreviewHeader />
       <Features />
       <Faq />
+      <Contact />
     </main>
   );
 }

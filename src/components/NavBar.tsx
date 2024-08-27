@@ -72,6 +72,17 @@ export default function NavBar() {
             {t("navbar.faq")}
           </Link>
         </NavbarItem>
+        <NavbarItem>
+          <Link
+            className="cursor-pointer"
+            color="foreground"
+            href="#contact"
+            onClick={(e) => handleScrollIntoView(e, "contact")}
+          >
+            {t("navbar.contact")}
+          </Link>
+        </NavbarItem>
+
         {/* <NavbarItem>
           <Link
             className="cursor-pointer"

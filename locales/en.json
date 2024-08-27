@@ -62,6 +62,9 @@
       "content": "Notifications are sent only when the software is minimized."
     }
   },
+  "contact": {
+    "title": "Contact"
+  },
   "footer": {
     "privacy": "Privacy Policy",
     "disclaimer": "Disclaimer",
