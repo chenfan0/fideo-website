@@ -14,6 +14,7 @@ export const config = {
   matcher: ['/', '/(cn|en)/:path*']
 };
 export default function middleware(request: NextRequest) {
+  // 这里需要处理其他参数，像?q=123
   if (request.nextUrl.pathname === '/') {
     return NextResponse.redirect(new URL('/cn', request.url));
   }

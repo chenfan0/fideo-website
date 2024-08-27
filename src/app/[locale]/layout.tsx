@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { GoogleAnalytics } from '@next/third-parties/google'
+// import { GoogleAnalytics } from '@next/third-parties'
+import Script from "next/script";
 
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -11,13 +12,16 @@ import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
-  const messages = await getMessages({
-    locale
-  }) as any
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const messages = (await getMessages({
+    locale,
+  })) as any;
   console.log(locale);
-  
+
   return {
     title: "Fideo",
     description: messages.meta.description,
@@ -43,8 +47,13 @@ export default async function RootLayout({
           <Footer />
         </NextIntlClientProvider>
       </body>
-
-      <GoogleAnalytics gaId="G-VMV5T4Y5PY" />
+      <Script id='microsoft-clarity-analytics'>
+        {`(function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ntw5g2do1l");`}
+      </Script>
     </html>
   );
 }
