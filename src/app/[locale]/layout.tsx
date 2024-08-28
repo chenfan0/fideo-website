@@ -9,6 +9,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
 import "../globals.css";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,6 +41,12 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} className="dark">
+      <Head>
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
+      </Head>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <NavBar />
@@ -47,7 +54,7 @@ export default async function RootLayout({
           <Footer />
         </NextIntlClientProvider>
       </body>
-      <Script id='microsoft-clarity-analytics'>
+      <Script id="microsoft-clarity-analytics">
         {`(function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
