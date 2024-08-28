@@ -9,7 +9,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
 import "../globals.css";
-import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,12 +40,12 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} className="dark">
-      <Head>
+      <head>
         <meta
           http-equiv="Content-Security-Policy"
           content="upgrade-insecure-requests"
         />
-      </Head>
+      </head>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <NavBar />
