@@ -11,22 +11,32 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get("code");
 
+  console.log('code: ', code)
+
   if (!code) {
     return NextResponse.json({}, { status: 404 });
   }
 
   let alreadyExist = await redis.get(`code:${code}`).catch(() => null)
 
+  console.log('redis result: ', alreadyExist)
+
   if (!alreadyExist) {
     const collection = await getCollection("code");
     alreadyExist = await collection.findOne({ code })
+    console.log('mongo result: ', alreadyExist)
 
     if (alreadyExist) {
       const expireTime = (alreadyExist as any).expireTime
 
       if (expireTime && expireTime > dayjs().valueOf()) {
+        console.log('set redis')
         alreadyExist = true
+        redis.set(`code:${code}`, true, {
+          ex: Math.floor((expireTime - dayjs().valueOf()) / 1000)
+        })
       } else {
+        console.log('delete mongo and redis')
         collection.deleteOne({ code })
         redis.del(`code:${code}`)
         alreadyExist = false
