@@ -15,7 +15,6 @@ export const config = {
 };
 export default function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
-  console.log(pathname, search, '=================');
   if (
     pathname === "/" ||
     (!pathname.startsWith("/cn") && !pathname.startsWith("/en"))
