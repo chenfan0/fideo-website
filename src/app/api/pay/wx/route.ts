@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
 
   const { data } = await wxPay({
     order_id: orderId,
-    money: '0.01',
+    money: '5.99',
     title: "Fideo网页操作激活码(一个月)",
     notifyUrl: 'https://www.fideo.site/api/pay/notify',
     attach: JSON.stringify({ email })
