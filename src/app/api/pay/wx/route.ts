@@ -46,6 +46,9 @@ export async function POST(request: NextRequest, response: NextResponse) {
     return {};
   });
 
+  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+
   if (!email) {
     return NextResponse.json({
       code: 0,
@@ -60,7 +63,10 @@ export async function POST(request: NextRequest, response: NextResponse) {
     });
   }
 
-  const alreadyExist = await redis.get(`paying:order:email:${email}`) as string | null;
+  const alreadyExist = (await redis.get(`paying:order:email:${email}`)) as
+    | string
+    | null;
+  console.log("redis: ", alreadyExist);
 
   if (alreadyExist) {
     return NextResponse.json({
@@ -87,18 +93,17 @@ export async function POST(request: NextRequest, response: NextResponse) {
     });
   }
 
-  await redis.set(
-    `paying:order:email:${email}`,
-    JSON.stringify({ orderId, qrcode: data.url_qrcode }),
-    {
-      ex: 60 * 3,
-    }
-  ).catch((err) => {
-    console.log("redis set error: ", err);
-  });
-
-  response.headers.set("Access-Control-Allow-Origin", "*");
-  response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  await redis
+    .set(
+      `paying:order:email:${email}`,
+      JSON.stringify({ orderId, qrcode: data.url_qrcode }),
+      {
+        ex: 60 * 3,
+      }
+    )
+    .catch((err) => {
+      console.log("redis set error: ", err);
+    });
 
   return NextResponse.json({
     code: 200,
