@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import axios from "axios";
-import validator from 'validator'
+import validator from "validator";
 
 import { genRandomString, nowDate, getHash } from "@/app/utils";
+import redis from "@/app/redis/redis";
 
 async function wxPay(options: any) {
   //发起支付的函数，直接写在发起支付的接口里面
@@ -19,7 +20,7 @@ async function wxPay(options: any) {
     type: "WAP",
     wap_url: "http://www.xunhupay.com",
     wap_name: "http://www.xunhupay.com",
-    attach: options.attach
+    attach: options.attach,
   };
   const hash = getHash(params, process.env.HU_PI_JIAO_APP_SECRET!);
   // 发送 POST 请求
@@ -39,49 +40,71 @@ async function wxPay(options: any) {
   );
 }
 
-export async function POST(request: NextRequest) {
-  const orderId = genRandomString()
-  const { email } = await request.json()
+export async function POST(request: NextRequest, response: NextResponse) {
+  const orderId = genRandomString();
+  const { email } = await request.json().catch(() => {
+    return {};
+  });
 
   if (!email) {
     return NextResponse.json({
       code: 0,
-      message: 'email is required'
-    })
+      message: "email is required",
+    });
   }
 
   if (!validator.isEmail(email)) {
     return NextResponse.json({
       code: 0,
-      message: 'email is invalid'
-    })
+      message: "email is invalid",
+    });
+  }
+
+  const alreadyExist = await redis.get(`paying:order:email:${email}`) as string | null;
+
+  if (alreadyExist) {
+    return NextResponse.json({
+      code: 200,
+      data: JSON.parse(alreadyExist),
+    });
   }
 
   const { data } = await wxPay({
     order_id: orderId,
-    money: '5.99',
+    money: "5.99",
     title: "Fideo网页操作激活码(一个月)",
-    notifyUrl: 'https://www.fideo.site/api/pay/notify',
-    attach: JSON.stringify({ email })
-  }).catch(err => {
-    console.log('/api/pay/wx error: ', err)
-    return { data: {} }
-  })
-  
+    notifyUrl: "https://www.fideo.site/api/pay/notify",
+    attach: JSON.stringify({ email }),
+  }).catch((err) => {
+    console.log("/api/pay/wx error: ", err);
+    return { data: {} };
+  });
 
   if (data.errcode !== 0) {
     return NextResponse.json({
       code: 0,
-      data: {}
-    })
+      data: {},
+    });
   }
+
+  await redis.set(
+    `paying:order:email:${email}`,
+    JSON.stringify({ orderId, qrcode: data.url_qrcode }),
+    {
+      ex: 60 * 3,
+    }
+  ).catch((err) => {
+    console.log("redis set error: ", err);
+  });
+
+  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
 
   return NextResponse.json({
     code: 200,
     data: {
       orderId: data.openid,
-      qrcode: data.url_qrcode
-    }
-  })
-  
+      qrcode: data.url_qrcode,
+    },
+  });
 }

@@ -5,8 +5,15 @@ import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 import dayjs from "dayjs";
 
-export async function POST(request: NextRequest) {
-  const body = await request.json();
+export async function POST(request: NextRequest, response: NextResponse) {
+  const body = await request.json().catch(() => null);
+
+  if (!body) {
+    return NextResponse.json({
+      code: 0,
+      data: {},
+    });
+  }
 
   const { orderId } = body;
 
@@ -51,6 +58,9 @@ export async function POST(request: NextRequest) {
       })
     }
   }
+
+  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
 
   return NextResponse.json({
     code: 0,
