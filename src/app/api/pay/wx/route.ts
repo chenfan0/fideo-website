@@ -45,34 +45,49 @@ export async function POST(request: NextRequest, response: NextResponse) {
   const { email } = await request.json().catch(() => {
     return {};
   });
-
-  response.headers.set("Access-Control-Allow-Origin", "*");
-  response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Content-Type": "application/json",
+  };
 
   if (!email) {
-    return NextResponse.json({
-      code: 0,
-      message: "email is required",
-    });
+    return new Response(
+      JSON.stringify({
+        code: 0,
+        message: "email is required",
+      }),
+      {
+        headers,
+      }
+    );
   }
 
   if (!validator.isEmail(email)) {
-    return NextResponse.json({
-      code: 0,
-      message: "email is invalid",
-    });
+    return new Response(
+      JSON.stringify({
+        code: 0,
+        message: "email is invalid",
+      }),
+      {
+        headers,
+      }
+    );
   }
 
-  const alreadyExist = (await redis.get(`paying:order:email:${email}`)) as
-    | string
-    | null;
-  console.log("redis: ", alreadyExist);
+
+  const alreadyExist = await redis.get(`paying:order:email:${email}`);
 
   if (alreadyExist) {
-    return NextResponse.json({
-      code: 200,
-      data: JSON.parse(alreadyExist),
-    });
+    return new Response(
+      JSON.stringify({
+        code: 200,
+        data: alreadyExist
+      }),
+      {
+        headers,
+      }
+    );
   }
 
   const { data } = await wxPay({
@@ -87,16 +102,21 @@ export async function POST(request: NextRequest, response: NextResponse) {
   });
 
   if (data.errcode !== 0) {
-    return NextResponse.json({
-      code: 0,
-      data: {},
-    });
+    return new Response(
+      JSON.stringify({
+        code: 0,
+        data: {},
+      }),
+      {
+        headers,
+      }
+    );
   }
 
   await redis
     .set(
       `paying:order:email:${email}`,
-      JSON.stringify({ orderId, qrcode: data.url_qrcode }),
+      { orderId: data.openid, qrcode: data.url_qrcode },
       {
         ex: 60 * 3,
       }
@@ -105,11 +125,16 @@ export async function POST(request: NextRequest, response: NextResponse) {
       console.log("redis set error: ", err);
     });
 
-  return NextResponse.json({
-    code: 200,
-    data: {
-      orderId: data.openid,
-      qrcode: data.url_qrcode,
-    },
-  });
+  return new Response(
+    JSON.stringify({
+      code: 200,
+      data: {
+        orderId: data.openid,
+        qrcode: data.url_qrcode,
+      },
+    }),
+    {
+      headers,
+    }
+  );
 }

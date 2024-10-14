@@ -6,16 +6,26 @@ import { NextRequest, NextResponse } from "next/server";
 import dayjs from "dayjs";
 
 export async function POST(request: NextRequest, response: NextResponse) {
-  const body = await request.json().catch(() => null);
-
-  if (!body) {
-    return NextResponse.json({
-      code: 0,
-      data: {},
-    });
-  }
+  const body = await request.json().catch(() => {});
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Content-Type": "application/json",
+  };
 
   const { orderId } = body;
+
+  if (!orderId) {
+    return new Response(
+      JSON.stringify({
+        code: 0,
+        message: "orderId is required",
+      }),
+      {
+        headers,
+      }
+    );
+  }
 
   const params: Record<string, any> = {
     appid: process.env.HU_PI_JIAO_APP_ID!,
@@ -33,7 +43,6 @@ export async function POST(request: NextRequest, response: NextResponse) {
       console.log("/api/pay/check error: ", err);
       return { data: {} };
     });
-  console.log("data", data);
 
   if (data.errcode === 0 && data.data.status === "OD") {
     let code = await redis.get(`orderId:${orderId}`).catch(() => null);
@@ -41,7 +50,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     if (!code) {
       const codeCollection = await getCollection("code");
       const { code: codeData, expireTime } =
-        (await codeCollection.findOne({ orderId })) || {} as any;
+        (await codeCollection.findOne({ orderId })) || ({} as any);
       if (expireTime && expireTime < dayjs().valueOf()) {
         codeCollection.deleteOne({ orderId });
       } else {
@@ -50,20 +59,27 @@ export async function POST(request: NextRequest, response: NextResponse) {
     }
 
     if (code) {
-      return NextResponse.json({
-        code: 200,
-        data: {
-          code,
-        },
-      })
+      return new Response(
+        JSON.stringify({
+          code: 200,
+          data: {
+            code,
+          },
+        }),
+        {
+          headers,
+        }
+      );
     }
   }
 
-  response.headers.set("Access-Control-Allow-Origin", "*");
-  response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-
-  return NextResponse.json({
-    code: 0,
-    data: {},
-  });
+  return new Response(
+    JSON.stringify({
+      code: 0,
+      data: {},
+    }),
+    {
+      headers,
+    }
+  );
 }
