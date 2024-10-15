@@ -41,11 +41,13 @@ async function wxPay(options: any) {
 }
 
 export async function OPTIONS(request: NextRequest, response: NextResponse) {
-  response.headers.set("Access-Control-Allow-Origin", "*");
-  response.headers.set("Access-Control-Allow-Methods", "POST,OPTIONS,GET,PUT,DELETE");
-  response.headers.set("Content-Type", "application/json");
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST,OPTIONS,GET,PUT,DELETE",
+    "Content-Type": "application/json",
+  };
   return new Response(null, {
-    headers: response.headers,
+    headers,
   });
 }
 
@@ -82,14 +84,13 @@ export async function POST(request: NextRequest, response: NextResponse) {
     );
   }
 
-
   const alreadyExist = await redis.get(`paying:order:email:${email}`);
 
   if (alreadyExist) {
     return new Response(
       JSON.stringify({
         code: 200,
-        data: alreadyExist
+        data: alreadyExist,
       }),
       {
         headers,
