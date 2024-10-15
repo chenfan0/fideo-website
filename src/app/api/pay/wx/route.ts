@@ -40,7 +40,7 @@ async function wxPay(options: any) {
   );
 }
 
-export async function OPTIONS(request: NextRequest, response: NextResponse) {
+export async function OPTIONS() {
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST,OPTIONS,GET,PUT,DELETE",
@@ -52,7 +52,7 @@ export async function OPTIONS(request: NextRequest, response: NextResponse) {
   });
 }
 
-export async function POST(request: NextRequest, response: NextResponse) {
+export async function POST(request: NextRequest) {
   const orderId = genRandomString();
   const { email } = await request.json().catch(() => ({}));
   const headers = {
@@ -100,10 +100,13 @@ export async function POST(request: NextRequest, response: NextResponse) {
     );
   }
 
+  const title = "Fideo网页操作激活码(一个月)"
+  const money = "5.99"
+
   const { data } = await wxPay({
     order_id: orderId,
-    money: "5.99",
-    title: "Fideo网页操作激活码(一个月)",
+    money,
+    title,
     notifyUrl: "https://www.fideo.site/api/pay/notify",
     attach: JSON.stringify({ email }),
   }).catch((err) => {
@@ -141,6 +144,8 @@ export async function POST(request: NextRequest, response: NextResponse) {
       data: {
         orderId: data.openid,
         qrcode: data.url_qrcode,
+        title,
+        money,
       },
     }),
     {

@@ -5,11 +5,23 @@ import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 import dayjs from "dayjs";
 
-export async function POST(request: NextRequest, response: NextResponse) {
+export async function OPTIONS() {
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Content-Type": "application/json",
+  };
+  return new Response(null, {
+    headers,
+  });
+}
+export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => {});
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json",
   };
 
