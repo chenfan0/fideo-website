@@ -100,9 +100,9 @@ export async function POST(request: NextRequest) {
     );
   }
 
+
   const title = "Fideo网页操作激活码(一个月)"
   const money = "5.99"
-
   const { data } = await wxPay({
     order_id: orderId,
     money,
@@ -129,7 +129,7 @@ export async function POST(request: NextRequest) {
   await redis
     .set(
       `paying:order:email:${email}`,
-      { orderId: data.openid, qrcode: data.url_qrcode },
+      { orderId: data.openid, qrcode: data.url_qrcode, title, money },
       {
         ex: 60 * 3,
       }
