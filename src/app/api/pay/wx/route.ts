@@ -42,12 +42,10 @@ async function wxPay(options: any) {
 
 export async function POST(request: NextRequest, response: NextResponse) {
   const orderId = genRandomString();
-  const { email } = await request.json().catch(() => {
-    return {};
-  });
+  const { email } = await request.json().catch(() => ({}));
   const headers = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Methods": "POST,OPTIONS,GET,PUT,DELETE",
     "Content-Type": "application/json",
   };
 
