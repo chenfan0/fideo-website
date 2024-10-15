@@ -40,6 +40,15 @@ async function wxPay(options: any) {
   );
 }
 
+export async function OPTIONS(request: NextRequest, response: NextResponse) {
+  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set("Access-Control-Allow-Methods", "POST,OPTIONS,GET,PUT,DELETE");
+  response.headers.set("Content-Type", "application/json");
+  return new Response(null, {
+    headers: response.headers,
+  });
+}
+
 export async function POST(request: NextRequest, response: NextResponse) {
   const orderId = genRandomString();
   const { email } = await request.json().catch(() => ({}));
