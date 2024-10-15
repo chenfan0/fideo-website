@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 export async function OPTIONS() {
   const headers = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Methods": "POST,OPTIONS,GET,PUT,DELETE",
     "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json",
   };
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => {});
   const headers = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Methods": "POST,OPTIONS,GET,PUT,DELETE",
     "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json",
   };
