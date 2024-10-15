@@ -44,6 +44,7 @@ export async function OPTIONS(request: NextRequest, response: NextResponse) {
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST,OPTIONS,GET,PUT,DELETE",
+    "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json",
   };
   return new Response(null, {
@@ -57,6 +58,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST,OPTIONS,GET,PUT,DELETE",
+    "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json",
   };
 
