@@ -102,7 +102,7 @@ export async function POST(request: NextRequest) {
 
 
   const title = "Fideo网页操作激活码(一个月)"
-  const money = "9.99"
+  const money = "0.01"
   const { data } = await wxPay({
     order_id: orderId,
     money,
