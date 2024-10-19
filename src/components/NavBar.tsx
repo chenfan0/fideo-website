@@ -83,7 +83,7 @@ export default function NavBar() {
           </Link>
         </NavbarItem>
 
-        {/* <NavbarItem>
+        <NavbarItem>
           <Link
             className="cursor-pointer"
             color="foreground"
@@ -91,7 +91,7 @@ export default function NavBar() {
           >
             {t("navbar.sponsor")}
           </Link>
-        </NavbarItem> */}
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:flex gap-10" justify="end">
@@ -126,6 +126,28 @@ export default function NavBar() {
             onPress={() => setIsMenuOpen(false)}
           >
             {t("navbar.faq")}
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+          <Link
+            color="foreground"
+            className="w-full"
+            href="#contact"
+            size="lg"
+            onPress={() => setIsMenuOpen(false)}
+          >
+            {t("navbar.contact")}
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+          <Link
+            color="foreground"
+            className="w-full"
+            href="#sponsor"
+            size="lg"
+            onPress={() => setIsMenuOpen(false)}
+          >
+            {t("navbar.sponsor")}
           </Link>
         </NavbarMenuItem>
       </NavbarMenu>

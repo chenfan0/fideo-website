@@ -2,7 +2,7 @@ import { getCollection } from "@/app/db/mongo";
 import redis from "@/app/redis/redis";
 import { getHash, nowDate, genRandomString } from "@/app/utils";
 import axios from "axios";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import dayjs from "dayjs";
 
 export async function OPTIONS() {
@@ -16,6 +16,7 @@ export async function OPTIONS() {
     headers,
   });
 }
+
 export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => {});
   const headers = {

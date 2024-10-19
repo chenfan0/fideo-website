@@ -68,6 +68,9 @@
   "contact": {
     "title": "联系作者"
   },
+  "sponsor": {
+    "title": "打赏作者"
+  },
   "footer": {
     "privacy": "隐私政策",
     "disclaimer": "免责声明",

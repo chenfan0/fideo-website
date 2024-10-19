@@ -2,7 +2,7 @@ import StreamPreviewHeader from "@/components/StreamPreviewHeader";
 import Features from "@/components/Features";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
-
+import Sponsor from "@/components/Sponsor";
 
 export default function Home() {
   return (
@@ -11,6 +11,7 @@ export default function Home() {
       <Features />
       <Faq />
       <Contact />
+      <Sponsor />
     </main>
   );
 }

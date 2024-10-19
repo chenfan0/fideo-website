@@ -68,6 +68,9 @@
   "contact": {
     "title": "Contact"
   },
+  "sponsor": {
+    "title": "Sponsor"
+  },
   "footer": {
     "privacy": "Privacy Policy",
     "disclaimer": "Disclaimer",
