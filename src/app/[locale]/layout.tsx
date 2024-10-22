@@ -20,11 +20,11 @@ export async function generateMetadata({
   const messages = (await getMessages({
     locale,
   })) as any;
-  console.log(locale);
 
   return {
-    title: "Fideo",
+    title: messages.meta.title,
     description: messages.meta.description,
+    keywords: messages.meta.keywords,
   };
 }
 
