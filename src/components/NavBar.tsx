@@ -56,7 +56,7 @@ export default function NavBar() {
           <Link
             className="cursor-pointer"
             color="foreground"
-            href="https://github.com/chenfan0/fideo-live-record/releases"
+            href="https://pro.fideo.site/cn#download"
             target="_blank"
           >
             {t("navbar.download")}
@@ -83,7 +83,7 @@ export default function NavBar() {
           </Link>
         </NavbarItem>
 
-        <NavbarItem>
+        {/* <NavbarItem>
           <Link
             className="cursor-pointer"
             color="foreground"
@@ -91,7 +91,7 @@ export default function NavBar() {
           >
             {t("navbar.sponsor")}
           </Link>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
 
       <NavbarContent className="sm:flex gap-10" justify="end">
@@ -110,7 +110,7 @@ export default function NavBar() {
           <Link
             color="foreground"
             className="w-full"
-            href="https://github.com/chenfan0/fideo-live-record/releases"
+            href="https://pro.fideo.site/cn#download"
             size="lg"
             onPress={() => setIsMenuOpen(false)}
           >
@@ -139,7 +139,7 @@ export default function NavBar() {
             {t("navbar.contact")}
           </Link>
         </NavbarMenuItem>
-        <NavbarMenuItem>
+        {/* <NavbarMenuItem>
           <Link
             color="foreground"
             className="w-full"
@@ -149,7 +149,7 @@ export default function NavBar() {
           >
             {t("navbar.sponsor")}
           </Link>
-        </NavbarMenuItem>
+        </NavbarMenuItem> */}
       </NavbarMenu>
     </Navbar>
   );

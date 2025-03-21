@@ -20,7 +20,7 @@ export default function Contact() {
           <Image src={qq} alt="qq" width={100} height={100} />
         </Link>
 
-        <Link className="cursor-pointer" href="https://discord.gg/md5HqyGW" target="_blank">
+        <Link className="cursor-pointer" href="https://discord.gg/mhCr4HRt" target="_blank">
           <Image src={discord} alt="discord" width={100} height={100} />
         </Link>
       </div>

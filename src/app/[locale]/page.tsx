@@ -11,7 +11,7 @@ export default function Home() {
       <Features />
       <Faq />
       <Contact />
-      <Sponsor />
+      {/* <Sponsor /> */}
     </main>
   );
 }
