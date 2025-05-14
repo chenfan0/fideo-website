@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import qq from "@/images/qq.svg";
 import discord from "@/images/discord.svg";
+import telegram from "@/images/telegram.svg";
 import { Link } from "@nextui-org/link";
 
 export default function Contact() {
@@ -20,8 +21,12 @@ export default function Contact() {
           <Image src={qq} alt="qq" width={100} height={100} />
         </Link>
 
-        <Link className="cursor-pointer" href="https://discord.gg/mhCr4HRt" target="_blank">
+        {/* <Link className="cursor-pointer" href="https://discord.gg/mhCr4HRt" target="_blank">
           <Image src={discord} alt="discord" width={100} height={100} />
+        </Link> */}
+
+        <Link className="cursor-pointer" href="https://t.me/+P9aw81NO6-k3OTI9" target="_blank">
+          <Image src={telegram} alt="telegram" width={100} height={100} />
         </Link>
       </div>
     </section>
